@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="refresh" content="11.5">
+    <title>Auto Refresh Page</title>
+</head>
+<body>
+    <div class="background-wrapper">
+        <div class="ani1"></div>
+        <div class="ani2"></div>
+        <div class="ani3"></div>
+        <div class="ani4"></div>
+        <div class="ani5"></div>
+    </div> 
+    <div class="wrapper-wrap">
+        <div class="wrapper">
+            <div id="myDiv" class="myDiv">This page will refresh in</div>
+            <div class="timer-div" id="timer">11</div>
+            <div id="myDiv2" class="myDiv2">seconds</div>
+        </div>
+    </div>
+    <style>
+        body{
+            background-color: #fff;
+            color: yellow;
+            overflow: hidden;
+        }
+        .background-wrapper{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display: flex;
+            width: 100vw;
+        }
+        .ani1, .ani2, .ani3, .ani4, .ani5{
+            width: 20vw;
+            height: 100vh;
+            background-color: #000;
+            position: relative;
+        }
+        .ani1{
+            animation-name: ani11;
+            animation-duration: 1s;
+        }
+        @keyframes ani11 {
+            0%{
+                top: -100vh;
+            }
+            100%{
+                top: 0vh;
+            }
+        }
+        .ani2{
+            animation-name: ani12;
+            animation-duration: 1s;
+        }
+        @keyframes ani12 {
+            0%{
+                top: 100vh;
+            }
+            100%{
+                top: 0vh;
+            }
+        }
+        .ani3{
+            animation-name: ani13;
+            animation-duration: 1s;
+        }
+        @keyframes ani13 {
+            0%{
+                top: -100vh;
+            }
+            100%{
+                top: 0vh;
+            }
+        }
+        .ani4{
+            animation-name: ani14;
+            animation-duration: 1s;
+        }
+        @keyframes ani14 {
+            0%{
+                top: 100vh;
+            }
+            100%{
+                top: 0vh;
+            }
+        }
+        .ani5{
+            animation-name: ani15;
+            animation-duration: 1s;
+        }
+        @keyframes ani15 {
+            0%{
+                top: -100vh;
+            }
+            100%{
+                top: 0vh;
+            }
+        }
+        .timer-div {
+            margin-left: 5px;
+            margin-right: 5px;
+            text-align: center;
+            opacity: 1;
+        }
+        .wrapper-wrap{
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            top: 50px;
+        }
+        .wrapper {
+            display: flex;
+            position: relative;
+            padding: 30px;
+        }
+        .myDiv, .myDiv2 {
+            opacity: .5;
+        }
+
+        .wrapper:hover .myDiv {
+            opacity: 1;
+        }
+        .wrapper:hover .myDiv2 {
+            opacity: 1;
+        }
+    </style>
+    <script>
+        // Function to update the countdown timer
+        function updateTimer() {
+            const timerElement = document.getElementById("timer");
+            let seconds = parseInt(timerElement.textContent);
+            
+            if (seconds > 1) {
+                seconds--;
+                timerElement.textContent = seconds;
+            } 
+            else {
+                clearInterval(interval); // Stop the countdown when it reaches 0
+                timerElement.textContent = "Time's up!";
+                //hide first and 2nd div
+                    const  myDiv = document.getElementById("myDiv");
+                    myDiv.innerHTML = "😰😰";
+                    const  myDiv2 = document.getElementById("myDiv2");
+                    myDiv2.innerHTML = "😰😰";
+                    }
+        }
+
+        // Initial call to start the countdown
+        updateTimer();
+        
+        // Set the interval to update the timer every second (1000 milliseconds)
+        const interval = setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>
